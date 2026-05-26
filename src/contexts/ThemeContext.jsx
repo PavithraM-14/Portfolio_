@@ -12,13 +12,25 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    const savedTheme = localStorage.getItem('theme');
-    return savedTheme ? savedTheme === 'dark' : true; // Default to dark mode
+    // Fallback for SSR or when localStorage is not available
+    if (typeof window === 'undefined') return true;
+    
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      return savedTheme ? savedTheme === 'dark' : true; // Default to dark mode
+    } catch (error) {
+      return true; // Default to dark mode if localStorage fails
+    }
   });
 
   useEffect(() => {
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+    try {
+      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+    } catch (error) {
+      // Handle localStorage errors gracefully
+      document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+    }
   }, [isDarkMode]);
 
   const toggleTheme = () => {

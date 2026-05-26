@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -47,9 +49,14 @@ const Navbar = () => {
           <button onClick={() => scrollToSection('contact')} className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}>Contact</button>
         </div>
 
-        <button className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="nav-actions">
+          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+          <button className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
     </nav>
   );

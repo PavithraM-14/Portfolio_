@@ -9,6 +9,13 @@ const Experience = () => {
         
         <div className="experience-content">
           <div className="experience-card">
+            <div className="experience-icon">🤖</div>
+            <h3>AI Web Development Intern</h3>
+            <p className="company">InAmigos Foundation</p>
+            <p className="year current-status">Current</p>
+          </div>
+
+          <div className="experience-card">
             <div className="experience-icon">🔬</div>
             <h3>Research Intern - Full Stack Developer</h3>
             <p className="company">SRM Group</p>

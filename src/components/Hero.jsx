@@ -29,9 +29,9 @@ const Hero = () => {
               <button onClick={() => scrollToSection('projects')} className="btn btn-primary">
                 View Projects
               </button>
-              <a href="mailto:pavithramuralikrishnan1403@gmail.com" className="btn btn-secondary">
+              <button onClick={() => scrollToSection('contact')} className="btn btn-secondary">
                 Contact Me
-              </a>
+              </button>
             </div>
 
             <div className="hero-tech-stack">

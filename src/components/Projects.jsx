@@ -4,6 +4,12 @@ import '../styles/Projects.css';
 const Projects = () => {
   const projects = [
     {
+      title: '🤱 MaaCare',
+      description: 'MaaCare is an AI-powered maternal healthcare platform that provides WhatsApp-based support, postpartum depression (PPD) risk detection, and real-time alerts for ASHA workers through a monitoring dashboard.',
+      tech: ['React.js', 'Tailwind CSS', 'Node.js', 'Express.js','Twilio WhatsApp API'],
+      status: 'In Progress'
+    },
+    {
       title: 'IdeaHub',
       description: 'A collaborative platform for sharing, discussing, and refining ideas among students',
       tech: ['React', 'Node.js', 'MongoDB'],
